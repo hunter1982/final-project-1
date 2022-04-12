@@ -15,6 +15,7 @@ import sys
 
 import pytest
 
+
 STATES_CAPITALS = {
     'Alabama' : 'Montgomery',
     'Alaska' : 'Juneau',
@@ -66,29 +67,44 @@ STATES_CAPITALS = {
     'West Virginia' : 'Charleston',
     'Wisconsin' : 'Madison',
     'Wyoming' : 'Cheyenne',
-}
+   }
 
 
 def capital_of_Idaho():
     # Your code here
-    pass
+    print('The capital of Idaho is', STATES_CAPITALS['Idaho'])
+#capital_of_Idaho()
 
 def all_states():
     # Your code here
-    pass
+    for key in STATES_CAPITALS.keys():
+        print(key)
+#all_states()
 
 def all_capitals():
     # Your code here
-    pass
+    for value in STATES_CAPITALS.values():
+        print(value)
+#all_capitals()
 
 def states_capitals_string():
     # Your code here
-    pass
+    list1 = []
 
-
+    for key, value in STATES_CAPITALS.items():
+        list1.append(key + ' -> ' + value)
+    print(", ".join(sorted(list1)))
+#states_capitals_string()
 
 def get_state(capital):
-    pass
+
+    for key, value in STATES_CAPITALS.items():
+        if value == capital:
+            print(f'{capital} is the capital of', key)
+
+
+#capital = input('Please enter a capital to search: ').capitalize()
+#get_state(capital)
 
 
 
@@ -100,7 +116,7 @@ def test_state_to_capital_unknown():
     with pytest.raises(KeyError):
         STATES_CAPITALS['']
 
-
+test_state_to_capital_unknown()
 def test_capital_to_state():
     assert 'Wyoming' == get_state('Cheyenne')
 
